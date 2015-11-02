@@ -17,10 +17,9 @@ class IndexController extends Controller
         $signatrue = $_GET['signatrue'];
         //形成数组 然后按字典排序
         $array = array();
-        $array = array($nonce,$timestamp,$echostr,$signatrue);
+        $array = array($nonce,$timestamp,$token);
         sort($array);
-        //yong sha1方式加密
-        $str = sha1($array);
+        $str = sha1(implode($array));
         if($str == $signatrue &&$echostr){
             echo $echostr;
             exit();
