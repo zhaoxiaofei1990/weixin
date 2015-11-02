@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 namespace Home\Controller;
 
