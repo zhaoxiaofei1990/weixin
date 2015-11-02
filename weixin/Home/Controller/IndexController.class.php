@@ -31,7 +31,7 @@ class IndexController extends Controller
     //接收事件并推送
     public function reponseMse(){
         //接收
-        $postAtt = $GLOBALS('HTTP_RAW_POST_DATA ');
+        $postArr = $GLOBALS('HTTP_RAW_POST_DATA');
         //处理消息类型 并设置回复类型和内容
         $postAbj = simplexml_load_string($postArr);
 //                <xml>
