@@ -16,7 +16,7 @@ class IndexController extends Controller
 		$signature = $_GET['signature'];
 		//形成数组，然后按字典序排序
 		$array = array();
-		$array = array($nonce, $timestamp, $token);
+		$array = array($nonce, $timestamp, $token,$signature);
 		sort($array);
 		//拼接成字符串,sha1加密 ，然后与signature进行校验
 		$str = sha1( implode( $array ) );
