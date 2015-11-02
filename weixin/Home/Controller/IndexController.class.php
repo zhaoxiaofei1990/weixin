@@ -10,30 +10,28 @@ class IndexController extends Controller
     public function index()
     {
         //获得参数
-   	//获得参数 signature nonce token timestamp echostr
-        $nonce     = $_GET['nonce'];
-        $token     = 'imooc';
+        $nonce = $_GET['nonce'];
+        $token = 'test';
         $timestamp = $_GET['timestamp'];
-        $echostr   = $_GET['echostr'];
-        $signature = $_GET['signature'];
-        //形成数组，然后按字典序排序
+        $echostr = $_GET['echostr'];
+        $signatrue = $_GET['signatrue'];
+        //形成数组 然后按字典排序
         $array = array();
-        $array = array($nonce, $timestamp, $token);
+        $array = array($nonce,$timestamp,$echostr,$signatrue);
         sort($array);
-        //拼接成字符串,sha1加密 ，然后与signature进行校验
-        $str = sha1( implode( $array ) );
-        if( $str  == $signature && $echostr ){
-                //第一次接入weixin api接口的时候
-                echo  $echostr;
-                exit;
-        }else{
-                $this->reponseMsg();
+        //yong sha1方式加密
+        $str = sha1($array);
+        if($str == $signatrue &&$echostr){
+            echo $echostr;
+            exit();
+        }  else {
+            $this->reponseMsg();
         }
-}
+    }
     //接收事件并推送
     public function reponseMse(){
         //接收
-        $postArr = $GLOBALS('HTTP_RAW_POST_DATA');
+        $postAtt = $GLOBALS('HTTP_RAW_POST_DATA ');
         //处理消息类型 并设置回复类型和内容
         $postAbj = simplexml_load_string($postArr);
 //                <xml>
@@ -56,7 +54,7 @@ class IndexController extends Controller
                 $time = $time();
                 $Msgtype='text';
                 $Content='欢迎你，亲';
-                $template = "<xml>
+              $template = "<xml>
                 <ToUserName><![CDATA[%s]]></ToUserName>
                 <FromUserName><![CDATA[%s]]></FromUserName>
                 <CreateTime>%s</CreateTime>
@@ -65,7 +63,7 @@ class IndexController extends Controller
                 </xml>";
                 $info = spintf($toUser,$formUser,$time,$Msgtype,$Content);
                     echo $info;
-                }
+            }
         }
 
     }
