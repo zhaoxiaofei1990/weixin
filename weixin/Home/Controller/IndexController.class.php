@@ -59,8 +59,7 @@ class IndexController extends Controller {
                     $content='哈喽';
                 break;    
             }
-            $tmplate = "<xml>
-                
+            $template = "<xml>
                         <ToUserName><![CDATA[%s]]></ToUserName>
                         <FromUserName><![CDATA[%s]]></FrimUserName>
                         <CreateTime>%s</CreateTime>
