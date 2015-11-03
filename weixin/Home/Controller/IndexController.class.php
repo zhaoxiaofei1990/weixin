@@ -56,16 +56,25 @@ class IndexController extends Controller {
         if(strtolower($postObj->MsgType)=='text'){
             switch (trim($postObj->Content)){
                 case 1:
-                    $content='哈喽';
-                break;    
+                    $content='1';
+                break;
+                case 2:
+                    $content = '2';
+                break;
+                case 3:
+                    $content = 3;
+                break;
+                case 4:
+                    $content = 4;
+                break;
             }
             $template = "<xml>
-                        <ToUserName><![CDATA[%s]]></ToUserName>
-                        <FromUserName><![CDATA[%s]]></FrimUserName>
-                        <CreateTime>%s</CreateTime>
-                        <MsgType><![CDATA[%s]]></MsgType>
-                        <Content><![CDATA[%s]]></content>
-                    </xml>";
+                <ToUserName><![CDATA[%s]]></ToUserName>
+                <FromUserName><![CDATA[%s]]></FromUserName>
+                <CreateTime>%s</CreateTime>
+                <MsgType><![CDATA[%s]]></MsgType>
+                <Content><![CDATA[%s]]></Content>
+                </xml>";
             $fromUser = $postObj->ToUserName;
             $toUser =$postObj->FromUserName;
             $time = time();
