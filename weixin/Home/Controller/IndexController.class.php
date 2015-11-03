@@ -35,7 +35,7 @@ class IndexController extends Controller {
             if(strtolower($postObj->Event)=='subscribe'){
              //组装数据包
                 $toUser = $postObj->FromUserName;
-                $fromUser = $postObj->TouUerName;
+                $fromUser = $postObj->ToUserName;
                 $time = time();
                 $msgType='text';
                 $content = '欢迎你,亲'.$postObj->FromUserName.'-'.$postObj->ToUserName;
@@ -46,7 +46,7 @@ class IndexController extends Controller {
                         <MsgType><![CDATA[%s]]></MsgType>
                         <Event><![CDATA[%s]]></Event>
                         </xml>";
-                $info = srintf($tmp,$toUer,$fromUser,$time,$msgType,$content);
+                $info = srintf($tmp,$toUser,$fromUser,$time,$msgType,$content);
                 echo $info;
                 
             }
