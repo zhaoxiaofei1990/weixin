@@ -31,12 +31,6 @@ class IndexController extends Controller {
         //获取微信的值
         $postArr = $GLOBALS['HTTP_RAW_POST_DATA'];
         $postObj = simplexml_load_string($postArr);
-        //$postObj->ToUserName = '';
-        //$postObj->FromUserName = '';
-        //$postObj->CreateTime = '';
-        //$postObj->MsgType = '';
-        //$postObj->Event = '';
-        // gh_e79a177814ed
         //判断该数据包是否是订阅的事件推送
         if (strtolower($postObj->MsgType) == 'event') {
             //如果是关注 subscribe 事件
@@ -56,6 +50,14 @@ class IndexController extends Controller {
                             </xml>";
                 $info = sprintf($template, $toUser, $fromUser, $time, $msgType, $content);
                 echo $info;
+            }
+        }
+        //客服请求微信   微信请求服务器公众平台
+        if(strtolower($postObj->MsgType)=='text'){
+            switch (trim($postObj->Content)){
+                case 1:
+                    $content='哈喽';
+                break;    
             }
         }
     }
