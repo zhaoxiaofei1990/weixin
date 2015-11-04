@@ -62,7 +62,7 @@ class IndexController extends Controller {
                     $content = '2';
                 break;
                 case 3:
-                    $content = 3;
+                    $content = 99;
                 break;
                 case 4:
                     $content = 4;
