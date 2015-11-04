@@ -53,20 +53,21 @@ class IndexController extends Controller {
             }
         }
         //客服请求微信   微信请求服务器公众平台
-        if(strtolower($postObj->MsgType)=='text'){
-            switch (trim($postObj->Content)){
+        //出现微信公众平台   无法显示 访问 说明代码配置有错误
+        if (strtolower($postObj->MsgType) == 'text') {
+            switch (trim($postObj->Content)) {
                 case 1:
-                    $content='1';
-                break;
+                    $content = '猪头';
+                    break;
                 case 2:
-                    $content = '2';
-                break;
+                    $content = '宝贝抱抱';
+                    break;
                 case 3:
-                    $content = 3;
-                break;
+                    $content = '嘿嘿';
+                    break;
                 case 4:
-                    $content = 4;
-                break;
+                    $content = '小子，一起出去玩怎么样';
+                    break;
             }
             $template = "<xml>
                 <ToUserName><![CDATA[%s]]></ToUserName>
@@ -76,11 +77,12 @@ class IndexController extends Controller {
                 <Content><![CDATA[%s]]></Content>
                 </xml>";
             $fromUser = $postObj->ToUserName;
-            $toUser =$postObj->FromUserName;
+            $toUser = $postObj->FromUserName;
             $time = time();
-            $msgType ='text';
-            echo sprintf($template,$toUser,$fromUser,$time,$msgType,$content);
+            $msgType = 'text';
+            echo sprintf($template, $toUser, $fromUser, $time, $msgType, $content);
         }
+        
     }
 
 }
