@@ -65,7 +65,7 @@ class IndexController extends Controller {
                     $content = 99;
                 break;
                 case 4:
-                    $content = 4;
+                    $content = 66;
                 break;
             }
             $template = "<xml>
